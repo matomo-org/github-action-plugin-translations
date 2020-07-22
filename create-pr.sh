@@ -31,6 +31,10 @@ if [[ -z "$PluginName" ]]; then
   exit 1
 fi
 
+if [[ -z "$Slug" ]]; then
+  Slug="matomo"
+fi
+
 cd $GITHUB_WORKSPACE/plugin
 
 baseBranch=$( git branch --show-current )
@@ -52,7 +56,7 @@ cd $GITHUB_WORKSPACE/matomo
 
 # Sync translations
 cd $GITHUB_WORKSPACE/matomo
-./console translations:update --username $TransifexUsername --password $TransifexPassword --force --plugin=$PluginName --no-interaction
+./console translations:update --username $TransifexUsername --password $TransifexPassword --force --plugin=$PluginName --slug=$Slug --no-interaction
 echo "Translation udpates fetched."
 
 # Check for changes
