@@ -46,7 +46,7 @@ git checkout -f translationupdates
 
 cd $GITHUB_WORKSPACE/matomo
 git submodule update --init --force  2> /dev/null
-composer install --prefer-dist
+composer install --prefer-dist --ignore-platform-reqs
 
 rm -rf $GITHUB_WORKSPACE/matomo/plugins/$PluginName
 ln -s $GITHUB_WORKSPACE/plugin $GITHUB_WORKSPACE/matomo/plugins/$PluginName
